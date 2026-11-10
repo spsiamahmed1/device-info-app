@@ -1,0 +1,2 @@
+package com.siam.deviceinfo.helper; import android.os.*;import java.io.File;import java.util.*;
+public final class StorageHelper { public static long freeBytes(){File f=Environment.getDataDirectory();return new StatFs(f.getPath()).getAvailableBytes();} public static long totalBytes(){File f=Environment.getDataDirectory();return new StatFs(f.getPath()).getTotalBytes();} public static Map<String,Long> summary(){Map<String,Long> m=new LinkedHashMap<>();m.put("মোট",totalBytes());m.put("খালি",freeBytes());m.put("ব্যবহৃত",Math.max(0,totalBytes()-freeBytes()));return m;} }
